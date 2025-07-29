@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: healthbee-frontend
+    env: static
+    buildCommand: npm run build
+    staticPublishPath: dist
+    rootDir: frontend
+  - type: web
+    name: healthbee-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 8000
+    rootDir: backend
